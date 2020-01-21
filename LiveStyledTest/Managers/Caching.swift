@@ -31,8 +31,6 @@ extension Caching where Self: BaseObject {
             updateHandler(self)
         }
     }
-    
-    
 }
 
 extension Array where Element: BaseObject {

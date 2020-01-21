@@ -17,7 +17,7 @@ class EventListViewControllerTest: QuickSpec {
         var presenter: MockPresenter?
         
         beforeEach() {
-            viewController = EventRouter.createModule()
+            viewController = EventListRouter.createModule()
             presenter = MockPresenter()
             viewController?.presenter = presenter
             _ = viewController?.view
@@ -27,6 +27,10 @@ class EventListViewControllerTest: QuickSpec {
             
             it("Should load view") {
                 expect(viewController?.title).toNot(beNil())
+            }
+            
+            it("Should fetch values") {
+                expect(presenter?.didfetchAllEvents).to(equal(true))
             }
         }
         
@@ -44,15 +48,28 @@ class EventListViewControllerTest: QuickSpec {
         describe("Check if recived data is displayed") {
             
             beforeEach() {
-                viewController?.eventListData = MockEvent.events
+                viewController?.eventListData = [ MockData.eventsViewModel]
             }
             
             it("Should refresh view") {
                 expect(viewController?.tableView.numberOfRows(inSection: 0)).to(equal(viewController?.eventListData.count ?? 0))
             }
         }
+        
+        describe("Pagination") {
+            
+            beforeEach() {
+                viewController?.eventListData = [ MockData.eventsViewModel]
+                let indexPath = IndexPath(row: (viewController?.eventListData.count ?? 0 ) - 1, section: 0)
+                viewController?.isDataLoading = false
+                viewController!.tableView!.delegate!.tableView?( viewController!.tableView, willDisplay: UITableViewCell( style: .default, reuseIdentifier: EventListViewCell.identifier), forRowAt: indexPath)
+            }
+            
+            it("Should load next page") {
+                expect(presenter?.didStartFetchingNextSetEvents).to(equal(true))
+            }
+        }
     }
-
 }
 
 class MockPresenter: ViewToPresenterEventProtocol {
@@ -67,7 +84,7 @@ class MockPresenter: ViewToPresenterEventProtocol {
     var events: [Event]?
     
     func fetchAllEvents() {
-        didStartFiltering = true
+        didfetchAllEvents = true
     }
     
     func fetchNextSetEvents(currentEventsCount: Int) {

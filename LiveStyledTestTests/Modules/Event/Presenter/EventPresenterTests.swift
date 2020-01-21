@@ -8,25 +8,29 @@
 
 import Quick
 import Nimble
-@testable import LiveStyledTestTests
+@testable import LiveStyledTest
 
 class EventPresenterTests: QuickSpec {
 
     class MockInteractor: PresenterToInteractorEventProtocol {
-        let mockEvents = MockEvent.events
-
         var presenter: InteractorToPresenterEventProtocol?
+        let mockEvents = MockData.events
+        var isEventFavourite = false
+        
+        func isEventFavorite(isFavorite: Bool, event: Event) {
+            isEventFavourite = true
+        }
         
         func fetchEventsForCriteria(text: String = "success") {
             if text == "success" {
-                presenter?.onSuccessEventsFetch(events: mockEvents)
+                presenter?.onSuccessEventsFetch(events: mockEvents, totalEntriesCount: mockEvents.count)
             } else {
                 presenter?.onFailedEventsFetch(error: NSError(domain: "test error", code: 123, userInfo: nil))
             }
         }
         
         func fetchEvents() {
-            presenter?.onSuccessEventsFetch(events: mockEvents)
+            presenter?.onSuccessEventsFetch(events: mockEvents, totalEntriesCount: 0)
         }
         
     }
@@ -34,7 +38,7 @@ class EventPresenterTests: QuickSpec {
     class MockRouter: PresenterToRouterProtocol {
         var event : Event?
         static func createModule() -> EventListViewController {
-            return EventRouter.createModule()
+            return EventListRouter.createModule()
         }
         
     }
@@ -53,9 +57,13 @@ class EventPresenterTests: QuickSpec {
         func dismissLoader() {
             shoulddismissLoader = true
         }
+        
+        func showEvents(events: [EventViewModel]) {
+            shouldShowEvents = true
+        }
     }
     
-    var presenter: EventPresenter!
+    var presenter: EventListPresenter!
     var mockInteractor: MockInteractor!
     var mockRouter: MockRouter!
     var mockEvents: [Event]!
@@ -64,7 +72,7 @@ class EventPresenterTests: QuickSpec {
     override func spec() {
         
         beforeEach() {
-            self.presenter = EventPresenter()
+            self.presenter = EventListPresenter()
             self.mockRouter = MockRouter()
             self.presenter?.router = self.mockRouter
             
@@ -74,7 +82,7 @@ class EventPresenterTests: QuickSpec {
             
             self.mockView = MockView()
             self.presenter?.view = self.mockView
-            self.mockEvents = MockEvent.events
+            self.mockEvents = MockData.events
         }
         
         describe("Events Fetch") {
@@ -86,10 +94,13 @@ class EventPresenterTests: QuickSpec {
         }
         
         describe("Events favorite") {
+            beforeEach() {
+                self.presenter!.events = MockData.events
+            }
             
             it("Should favorite event") {
-                self.presenter.isFavoriteAction(isFavorite: true, index: indexPath.row)
-                expect(self.mockView.shouldFavoriteEvent).to(equal(true))
+                self.presenter.isFavoriteAction(isFavorite: true, index: 0)
+                expect(self.mockInteractor.isEventFavourite).to(equal(true))
             }
         }
     }

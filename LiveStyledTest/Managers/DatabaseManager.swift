@@ -18,6 +18,11 @@ class DatabaseManager {
         database = try! Realm()
     }
     
+    // For unit testing
+    init(database: Realm) {
+        self.database = database
+    }
+    
     func getAll<T>(type: Object.Type) -> [T] {
         return (Array(database.objects(type)) as? [T]) ?? []
     }
@@ -28,4 +33,10 @@ class DatabaseManager {
         }
     }
 
+    func removeAll(type: Object.Type) {
+        let objects = database.objects(type)
+        try! database.write {
+            database.delete(objects)
+        }
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  EventRouterTests.swift
+//  EventListRouterTests.swift
 //  LiveStyledTestTests
 //
 //  Created by Sajeev on 1/21/20.
@@ -8,24 +8,24 @@
 
 import Quick
 import Nimble
-@testable import LiveStyledTestTests
+@testable import LiveStyledTest
 
-class EventRouterTests: QuickSpec {
+class EventListRouterTests: QuickSpec {
  
     override func spec() {
         
-        var eventRouter: EventRouter!
+        var eventRouter: EventListRouter!
         var event: Event!
         
         beforeEach() {
-            eventRouter = EventRouter()
+            eventRouter = EventListRouter()
             event = Event()
         }
         
-        describe("Should create the module and present") {
+        describe("Router module creation") {
             
-            it("should have presented EventDetailViewController") {
-                let eventListViewController = EventRouter.createModule()
+            it("Should create the event list module") {
+                let eventListViewController = EventListRouter.createModule()
                 expect(eventListViewController).to(beAKindOf(EventListViewController.self))
 
                 expect(eventListViewController.presenter).toNot(beNil())

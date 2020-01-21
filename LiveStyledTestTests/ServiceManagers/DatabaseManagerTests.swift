@@ -9,13 +9,11 @@
 import RealmSwift
 import Quick
 import Nimble
-
-@testable import SeatGeek
+@testable import LiveStyledTest
 
 class MockObject: Object {}
 
 class MockDataBaseManager: DatabaseManager {
-
     init() {
         let database = try! Realm()
         Realm.Configuration.defaultConfiguration.inMemoryIdentifier = "LiveStyledTest"

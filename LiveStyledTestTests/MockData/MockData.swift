@@ -7,23 +7,35 @@
 //
 
 import RealmSwift
-@testable import LiveStyledTestTests
+@testable import LiveStyledTest
 
-class MockEvent {
+class MockData {
     
-    static let events = [Event(id: "123", startDate: "12 Friday", artist: "test", imageUrlString: "") ]
+    static let events = [MockEvent(id: "1", startDate: "12 Friday", artist: "Artist1", imageUrlString: ""),MockEvent(id: "2", startDate: "13 Friday", artist: "Artist2", imageUrlString: "") ]
+    
+    static let eventsResponse = [MockEvent.EventResponse(items: events,page: "0", pageSize:0,total: 0)]
+    
+    static let eventsViewModel = (title:"Artist1", date:"12 Friday", imageUrlString:"", isFavorite:true)
 }
 
-extension Event {
-    convenience init(title: String, shortTitle: String, date:String, url: String,venue: Venue, performers: [Performer]) {
+class MockEvent: Event {}
+
+extension MockEvent {
+    convenience init(id: String, startDate: String, artist: String, imageUrlString: String) {
         self.init()
-        self.title       = title
-        self.shortTitle  = shortTitle
-        self.date        = shortTitle
-        self.url         = url
-        self.venue       = venue
-        performers.forEach { (performer) in
-            self.performers.append(performer)
-        }
+        self.id = id
+        self.startDate = startDate
+        self.artist = artist
+        self.imageUrlString = imageUrlString
+    }
+}
+
+extension Event.EventResponse {
+    convenience init(items: [Event], page: String, pageSize: Int, total: Int) {
+        self.init()
+        self.items = items
+        self.page = page
+        self.pageSize = pageSize
+        self.total = total
     }
 }

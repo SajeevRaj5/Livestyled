@@ -8,7 +8,7 @@
 
 import Quick
 import Nimble
-@testable import LiveStyledTestTests
+@testable import LiveStyledTest
 
 class AlertControllerTests: QuickSpec {
     override func spec() {
@@ -24,12 +24,27 @@ class AlertControllerTests: QuickSpec {
         }
     }
     
-    class  MockAlertController : AlertController {
+    class MockAlertController : AlertController {
         override class func topMostViewController() -> UIViewController {
             let vc =  MockNavigationController().topViewController ?? UIViewController()
             _ = vc.view
             return vc
         }
-
     }
 }
+
+class MockNavigationController: UINavigationController {
+    
+    var pushedViewController: UIViewController?
+    
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        pushedViewController = viewController
+        super.pushViewController(viewController, animated: true)
+    }
+    
+    func getNavigationController(for viewController: UIViewController) -> MockNavigationController {
+        UIApplication.shared.windows.filter{$0.isKeyWindow}.first?.rootViewController = navigationController
+        return MockNavigationController(rootViewController: viewController)
+    }
+}
+

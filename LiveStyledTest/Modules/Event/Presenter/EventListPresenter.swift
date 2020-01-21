@@ -15,7 +15,7 @@ class EventListPresenter: ViewToPresenterEventProtocol {
     
     var events: [Event]?
 
-    var view: PresenterToViewEventProtocol?
+    weak var view: PresenterToViewEventProtocol?
     
     var interactor: PresenterToInteractorEventProtocol?
     
@@ -29,7 +29,7 @@ class EventListPresenter: ViewToPresenterEventProtocol {
     }
     
     func fetchNextSetEvents(currentEventsCount: Int) {
-        if currentEventsCount <= totalEntries {
+        if currentEventsCount < totalEntries {
             interactor?.fetchEvents()
         }
     }
@@ -42,9 +42,16 @@ class EventListPresenter: ViewToPresenterEventProtocol {
 
 extension EventListPresenter: InteractorToPresenterEventProtocol {
     func onSuccessEventsFetch(events: [Event], totalEntriesCount: Int) {
+        
+        // initialise list with empty data if nil
+        if self.events == nil {
+            self.events = [Event]()
+        }
+        
         totalEntries = totalEntriesCount
-        self.events = events
+        self.events?.append(contentsOf: events)
         var eventViewModels = [EventViewModel]()
+        
         for event in events {
             let eventViewModel: EventViewModel = (event.artist, event.startDate, event.imageUrlString, event.isFavourite)
             eventViewModels.append(eventViewModel)

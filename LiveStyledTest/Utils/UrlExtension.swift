@@ -10,11 +10,17 @@ import Foundation
 import UIKit
 
 extension URL {
-    func image(completion: @escaping ((UIImage) -> Void)) {
-        let data = try? Data(contentsOf: self)
-        
-        if let imageData = data, let image = UIImage(data: imageData) {
-            completion(image)
+    func image(completion: @escaping ((UIImage?) -> Void)) {
+        DispatchQueue.global().async {
+            if let data = try? Data(contentsOf: self) {
+                DispatchQueue.main.async {
+                    completion(UIImage(data: data))
+                }
+            } else {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+            }
         }
     }
 }

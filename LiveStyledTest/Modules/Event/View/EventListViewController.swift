@@ -37,10 +37,7 @@ class EventListViewController: UITableViewController, ActivityIndicatorPresenter
         isDataLoading = true
         
         // fetch all events
-        presenter?.fetchAllEvents()
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 100
+        presenter?.fetchAllEvents()        
     }
     
     private func registerCell() {
@@ -59,6 +56,7 @@ extension EventListViewController {
         guard let eventCell = tableView.dequeueReusableCell(withIdentifier: EventListViewCell.identifier, for: indexPath) as? EventListViewCell else { return UITableViewCell() }
         eventCell.configureView(event: eventListData[indexPath.row])
         eventCell.favoriteActionHandler = { [weak self] isFavorite in
+            self?.eventListData[indexPath.row].isFavorite = isFavorite
             self?.presenter?.isFavoriteAction(isFavorite: isFavorite, index: indexPath.row)
         }
         return eventCell
@@ -69,6 +67,11 @@ extension EventListViewController {
         // if user scroll to last 3 data in the list, start fetching the next list from next page
         guard (indexPath.row == eventListData.count - 1), !isDataLoading else { return }
         presenter?.fetchNextSetEvents(currentEventsCount: eventListData.count)
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
 

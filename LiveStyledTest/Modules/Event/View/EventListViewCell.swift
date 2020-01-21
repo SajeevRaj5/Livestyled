@@ -17,23 +17,10 @@ class EventListViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel?
     @IBOutlet weak var iconImageView: UIImageView?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
-        // set corner radius
-        iconImageView?.layer.cornerRadius = (iconImageView?.frame.size.width ?? 0)/2
-    }
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         
         favoriteActionHandler?(sender.isSelected)
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func configureView(event: EventViewModel) {
@@ -43,7 +30,8 @@ class EventListViewCell: UITableViewCell {
         favoriteButton?.isSelected = event.isFavorite
         guard let url = URL(string: event.imageUrlString) else { return }
         url.image { [weak self] (image) in
-            self?.iconImageView?.image = image
+            guard let eventImage = image else { return }
+            self?.iconImageView?.circle(image: eventImage)
         }
     }
     

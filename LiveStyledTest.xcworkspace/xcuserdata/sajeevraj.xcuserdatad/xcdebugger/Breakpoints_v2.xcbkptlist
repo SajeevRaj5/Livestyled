@@ -29,38 +29,6 @@
             endingLineNumber = "22"
             landmarkName = "fetchEvents()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D7A249C3-3E24-465C-83CD-288313937150 - 27a79ae23e7a7a96"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "LiveStyledTest.EventListInteractor.fetchEvents() -&gt; ()"
-                  moduleName = "LiveStyledTest"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sajeevraj/Documents/Projects/LiveStyledTest/LiveStyledTest/Modules/Artist/Interactor/EventListInteractor.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "99">
-               </Location>
-               <Location
-                  uuid = "D7A249C3-3E24-465C-83CD-288313937150 - d22930a762f78288"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (LiveStyledTest.ServiceResponse&lt;LiveStyledTest.Event.EventResponse&gt;) -&gt; () in LiveStyledTest.EventListInteractor.fetchEvents() -&gt; ()"
-                  moduleName = "LiveStyledTest"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sajeevraj/Documents/Projects/LiveStyledTest/LiveStyledTest/Modules/Artist/Interactor/EventListInteractor.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "242">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -92,6 +60,22 @@
             startingLineNumber = "39"
             endingLineNumber = "39"
             landmarkName = "fetchEvents()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E1E8ACB9-9740-4535-B106-3C5E893EF5CC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveStyledTest/Modules/Event/Presenter/EventListPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "isFavoriteAction(isFavorite:index:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

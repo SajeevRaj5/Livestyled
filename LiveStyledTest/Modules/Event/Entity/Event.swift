@@ -23,10 +23,10 @@ import UIKit
     
     
     enum CodingKeys: String, CodingKey {
-        case id           = "id"
-        case artist        = "title"
-        case imageUrlString = "image"
-        case startDate      = "startDate"
+        case id                 = "id"
+        case artist             = "title"
+        case imageUrlString     = "image"
+        case startDate          = "startDate"
     }
     
     required convenience init(from decoder: Decoder) throws {
@@ -42,7 +42,7 @@ import UIKit
         
     }
     
-//    // MARK: - Encodable
+    // MARK: - Encodable
      public func encode(to encoder: Encoder) throws {
          var container = encoder.container(keyedBy: CodingKeys.self)
          try container.encode(id, forKey: .id)
@@ -64,7 +64,6 @@ import UIKit
             }
         }
     }
-    
 }
 
 extension Event {

@@ -22,11 +22,11 @@ extension TimeInterval {
                 dateFormatter.dateFormat = "h:mm a"
                 return dateFormatter.string(from: date)
             } else {
-                dateFormatter.dateFormat = "EEEE"
+                dateFormatter.dateFormat = "EEEE h:mm"
                 return dateFormatter.string(from: date)
             }
         } else {
-            dateFormatter.dateFormat = "MMM d, yyyy"
+            dateFormatter.dateFormat = "h:mm a, MMM d, yyyy"
             return dateFormatter.string(from: date)
         }
     }

@@ -8,7 +8,7 @@
 
 import Quick
 import Nimble
-@testable import LiveStyledTestTests
+@testable import LiveStyledTest
 
 class EventListViewCellTest: QuickSpec {
     
@@ -26,12 +26,23 @@ class EventListViewCellTest: QuickSpec {
             
             context("did display values") {
                 beforeEach {
-                    cell.configureView(event: MockEvent.events.first!)
+                    cell.configureView(event: MockData.eventsViewModel)
                 }
                 
                 it("should display details") {
                     expect(cell.titleLabel?.text).toNot(beEmpty())
                     expect(cell.dateLabel?.text).toNot(beEmpty())
+                }
+            }
+            
+            context("did favourite") {
+                let favouritesButton = UIButton()
+                beforeEach {
+                    cell.favoriteButtonAction(favouritesButton)
+                }
+                
+                it("did favourite event") {
+                    expect(favouritesButton.isSelected).to(equal(true))
                 }
             }
         }

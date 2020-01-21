@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-import UIKit
-
 protocol ViewToPresenterEventProtocol {
     var view: PresenterToViewEventProtocol? {get set}
     var interactor: PresenterToInteractorEventProtocol? {get set}
@@ -22,7 +20,7 @@ protocol ViewToPresenterEventProtocol {
     func isFavoriteAction(isFavorite: Bool, index: Int)
 }
 
-protocol PresenterToViewEventProtocol {
+protocol PresenterToViewEventProtocol: class {
     func showEvents(events: [EventViewModel])
     func showError(error: Error)
     func dismissLoader()
@@ -34,7 +32,7 @@ protocol PresenterToInteractorEventProtocol {
     func isEventFavorite(isFavorite: Bool, event: Event)
 }
 
-protocol InteractorToPresenterEventProtocol {
+protocol InteractorToPresenterEventProtocol: class {
     func onSuccessEventsFetch(events: [Event], totalEntriesCount: Int)
     func onFailedEventsFetch(error: Error)
     func onServerResponseReceival()

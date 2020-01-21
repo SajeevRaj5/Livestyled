@@ -10,7 +10,8 @@ import Foundation
 
 class EventListInteractor: PresenterToInteractorEventProtocol {
     
-    var presenter: InteractorToPresenterEventProtocol?
+    weak var presenter: InteractorToPresenterEventProtocol?
+    
     var totalEntries = 0
     var nextPage = 0
     

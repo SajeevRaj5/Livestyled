@@ -51,7 +51,7 @@ class AlertController {
         }
     }
     
-    static func topMostViewController() -> UIViewController {
+    class func topMostViewController() -> UIViewController {
         var topViewController: UIViewController? = UIApplication.shared.windows.filter{$0.isKeyWindow}.first?.rootViewController
         while ((topViewController?.presentedViewController) != nil) {
             topViewController = topViewController?.presentedViewController
