@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "80D03D1C-CB2D-4E7C-B18A-3EC968887EAE"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            uuid = "9EA90837-B3D0-454C-926C-85EA860270E8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "1"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D7A249C3-3E24-465C-83CD-288313937150"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveStyledTest/Modules/Artist/Interactor/EventListInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "fetchEvents()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D7A249C3-3E24-465C-83CD-288313937150 - 27a79ae23e7a7a96"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LiveStyledTest.EventListInteractor.fetchEvents() -&gt; ()"
+                  moduleName = "LiveStyledTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sajeevraj/Documents/Projects/LiveStyledTest/LiveStyledTest/Modules/Artist/Interactor/EventListInteractor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "99">
+               </Location>
+               <Location
+                  uuid = "D7A249C3-3E24-465C-83CD-288313937150 - d22930a762f78288"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (LiveStyledTest.ServiceResponse&lt;LiveStyledTest.Event.EventResponse&gt;) -&gt; () in LiveStyledTest.EventListInteractor.fetchEvents() -&gt; ()"
+                  moduleName = "LiveStyledTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sajeevraj/Documents/Projects/LiveStyledTest/LiveStyledTest/Modules/Artist/Interactor/EventListInteractor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "242">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7B8990A1-5B3E-41D4-80F1-355E70956FBA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveStyledTest/Modules/Artist/Interactor/EventListInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "updatedEventsBasedOnFavorite(newEvents:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3DE1CFAC-0F78-4FED-A6AD-1386DE1E78CF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveStyledTest/Modules/Artist/Interactor/EventListInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "fetchEvents()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
